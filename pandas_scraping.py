@@ -1,5 +1,10 @@
 import pandas as pd
 import requests
+from urllib.parse import urlencode
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def player(url):
     #Ran into issues with CloudFlare so I decided not to use the header
@@ -11,6 +16,15 @@ def player(url):
     #create request for html content of page via url
     r = requests.get(url, headers=header) #if this doesn't work, try r = requests.get(url, headers=header)
      
+    r = requests.get(
+        url='https://proxy.scrapeops.io/v1/',
+        params=urlencode({
+            "api_key": os.getenv("SCRAPE_OPS_API_KEY"),
+            "url": url
+        }),
+        timeout=120,
+    )
+    
     #read html content and create a dataFrame object from it
     df = pd.read_html(r.text) #if encoding issues arise, try adding this after r.text : .encode('utf-8').decode('ascii', 'ignore'))
     
