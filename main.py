@@ -25,6 +25,9 @@ def generate(name):
             "message": "Error generating chart. Please try again!"
         })
 
+def create_app():
+   return app
+
 if __name__ == "__main__":
     from waitress import serve
     serve(app, host="0.0.0.0", port=8080)
