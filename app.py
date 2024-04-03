@@ -1,6 +1,7 @@
 import get_link as gl
 import pandas_scraping as ps
 import radar_from_arrs as ra
+import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -25,4 +26,4 @@ def generate(name):
         })
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
