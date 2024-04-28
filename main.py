@@ -1,18 +1,17 @@
 import get_link as gl
 import pandas_scraping as ps
 import radar_from_arrs as ra
-import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 @app.route("/chart/<name>", methods=["GET"])
 def generate(name):
-    url = gl.getFBRefLink(name)
-    arrs = ps.player(url)
-    res = ra.radar(arrs[0], arrs[1])
-    
     try:
+        url = gl.getFBRefLink(name)
+        arrs = ps.player(url)
+        res = ra.radar(arrs[0], arrs[1])
+
         return jsonify({
             "ok": True,
             "message": res

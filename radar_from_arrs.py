@@ -52,8 +52,6 @@ def radar(statVals, statNames):
     # changes xtick colours
     plt.tick_params(colors="white")
 
-    # adds player name to plot
-
     # appending array as first and last values need to be the same for plot() function
     plot_angles.append(plot_angles[0])
     statVals.append(statVals[0])
