@@ -21,7 +21,7 @@ def generate(name):
         print(e)
         return jsonify({
             "ok": False,
-            "message": "Error generating chart, please try again!"
+            "message": "Error generating chart. Please try again!"
         })
 
 def create_app():
